@@ -3,11 +3,9 @@
 #include <string.h>
 
 typedef struct {
-  char candidateName[100];
+  char candidateName[50];
   int votes;
 } Candidate;
-
-
 
 int main(int argc, char const *argv[])
 {
@@ -23,12 +21,31 @@ int main(int argc, char const *argv[])
   printf("Number of voters:");
   scanf("%i", &voters);
 
-  Candidate candidates[voters];
+  Candidate candidates[numberOfCandidates];
 
   for (int i = 0; i < numberOfCandidates; i++) {
     strcpy(candidates[i].candidateName, argv[i + 1]);
     candidates[i].votes = 0;
   }
+
+ 
+  for (int i = 0; i < voters; i++) {
+    char vote[50];
+    printf("Vote: ");
+    scanf("%s", &vote);
+    printf("\n");
+
+    for (int ii = 0; ii < numberOfCandidates; ii++) {
+      int stringEquality = strcmp(vote, candidates[ii].candidateName);
+     
+      if ( stringEquality == 0 ) {
+        candidates[ii].votes += 1;
+        break;
+      }
+    }
+    
+  }
+  
 
 
   
