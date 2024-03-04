@@ -28,12 +28,11 @@ int main(int argc, char const *argv[])
     candidates[i].votes = 0;
   }
 
- 
+
   for (int i = 0; i < voters; i++) {
     char vote[50];
     printf("Vote: ");
     scanf("%s", &vote);
-    printf("\n");
 
     for (int ii = 0; ii < numberOfCandidates; ii++) {
       int stringEquality = strcmp(vote, candidates[ii].candidateName);
@@ -41,10 +40,16 @@ int main(int argc, char const *argv[])
       if ( stringEquality == 0 ) {
         candidates[ii].votes += 1;
         break;
+      } else if ( ii == numberOfCandidates - 1 ) {
+        printf("Invalid vote\n");
+        i -= 1;
+        break;
       }
     }
-    
+
   }
+
+  
   
 
 
