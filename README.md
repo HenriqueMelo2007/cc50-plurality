@@ -6,4 +6,4 @@ A plurality election, also known as a simple majority election or single-vote el
 
 ## Example in VScode terminal:
 
-![Demonstration of using the program](preview.jpg)
+![Demonstration of using the program](preview.png)
