@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef struct {
   char candidateName[50];
@@ -18,7 +19,7 @@ int main(int argc, char const *argv[])
   int voters;
   int numberOfCandidates = argc - 1;
 
-  printf("Number of voters:");
+  printf("Number of voters: ");
   scanf("%i", &voters);
 
   Candidate candidates[numberOfCandidates];
@@ -49,11 +50,28 @@ int main(int argc, char const *argv[])
 
   }
 
-  
-  
+  int indexWinner;
+  int votesOfWinner = 0;
+  bool possibleDraw = false;
 
+  for (int i = 0; i < numberOfCandidates; i++) {
+    int votesOfThisCandidate = candidates[i].votes;
 
-  
+    if ( votesOfThisCandidate > votesOfWinner ) {
+      votesOfWinner = votesOfThisCandidate;
+      indexWinner = i;
+      possibleDraw = false;
+    } else if ( votesOfThisCandidate == votesOfWinner ) {
+      possibleDraw = true;
+    }
+  }
+
+  if ( possibleDraw == true ) {
+    printf("It is a draw");
+  } else {
+    printf("The Winner is: %s", candidates[indexWinner].candidateName);
+  }
+
   
   return 0;
 }
